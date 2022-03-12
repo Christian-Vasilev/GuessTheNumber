@@ -6,19 +6,20 @@ import {
     Button,
     StyleSheet
 } from 'react-native';
+import Card from '../../components/Card';
 
 const StartGameScreen = () => {
     return (
         <View style={styles.screen}>
-            <Text style={styles.title}>Start a new game</Text>
-            <View style={styles.inputContainer}>
+            <Text style={styles.title}>Start a new game!</Text>
+            <Card style={styles.inputContainer} >
                 <Text>Select a Number</Text>
                 <TextInput placeholder='What is your number' />
                 <View style={styles.buttonContainer}>
                     <Button title='Reset' color='red' onPress={() => {}}/>
                     <Button title='Confirm' color='green' onPress={() => {}} />
                 </View>
-            </View>
+            </Card>
         </View>
     );
 }
