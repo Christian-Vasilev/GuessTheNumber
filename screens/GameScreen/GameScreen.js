@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
     View,
     Text,
@@ -26,6 +26,11 @@ const GameScreen = ({ excludeNumber }) => {
     const [currentGuess, setCurrentGuess] = useState(generateNumberBetween(1, 100, excludeNumber));
     const currentLow = useRef(1);
     const currentHight = useRef(100);
+    useEffect(() => {
+        if (currentGuess === excludeNumber) {
+            
+        }
+    });
 
     const nextGuessHandler = direction => {
         if ((direction === 'lower' && currentGuess < excludeNumber) 
