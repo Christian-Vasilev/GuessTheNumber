@@ -22,15 +22,17 @@ const generateNumberBetween = (min, max, exclude) => {
     return randomNumber;
 }
 
-const GameScreen = ({ excludeNumber }) => {
+const GameScreen = ({ excludeNumber, onGameOver }) => {
     const [currentGuess, setCurrentGuess] = useState(generateNumberBetween(1, 100, excludeNumber));
     const currentLow = useRef(1);
     const currentHight = useRef(100);
+    const [rounds, setRounds] = useState(0);
+
     useEffect(() => {
         if (currentGuess === excludeNumber) {
-            
+            onGameOver(rounds);
         }
-    });
+    }, [currentGuess, excludeNumber, onGameOver]);
 
     const nextGuessHandler = direction => {
         if ((direction === 'lower' && currentGuess < excludeNumber) 
@@ -56,6 +58,7 @@ const GameScreen = ({ excludeNumber }) => {
         const nextNumber = generateNumberBetween(currentLow.current, currentHight.current, currentGuess);
         
         setCurrentGuess(nextNumber);
+        setRounds((currentRounds) => currentRounds + 1);
     };
 
     return (
